@@ -23,7 +23,7 @@ function addR() {
         for (let i = 0; i < numCols; i++){
             let col = document.createElement("td");
             col.onclick = function(){
-              this.style.backgroundColor = colorSelected;
+                this.style.backgroundColor = colorSelected;
             };
             row.appendChild(col);
         }
@@ -48,7 +48,7 @@ function addC() {
         for (let i = 0; i < rows.length; i++){
             let col = document.createElement("td");
             col.onclick = function(){
-              this.style.backgroundColor = colorSelected;
+                this.style.backgroundColor = colorSelected;
             };
             rows[i].appendChild(col);
         }
@@ -60,7 +60,7 @@ function removeR() {
     let grid = document.getElementById("grid");
     let rows = document.getElementsByTagName("tr");
     if(rows.length === 0){
-        alert("There is nothing to delete");
+        alert("There is nothing to delete.");
         return;
     }
 
@@ -74,7 +74,7 @@ function removeC() {
     let grid = document.getElementById("grid");
 
     if(rows.length === 0){
-        alert("There is nothing to delete");
+        alert("There is nothing to delete.");
         return;
     }
 
@@ -117,6 +117,34 @@ function fillU(){
         if (cells[i].style.backgroundColor === "") {
             cells[i].style.backgroundColor = colorSelected;
         }
+    }
+}
+
+// make a custom sized box 
+function makeBox(){
+    let grid = document.getElementById("grid");
+    let rows = document.getElementsByTagName("tr");
+    let cols = document.getElementsByTagName("td");
+
+    if(rows.length !== 0 || cols.length !== 0){
+        alert("Please remove all rows and columns before making a custom sized box.");
+        return;
+    }
+
+    
+    let rowNumber = parseInt(document.getElementById("rownumber").value);
+    let colNumber = parseInt(document.getElementById("colnumber").value);
+
+    for (let i = 0; i < rowNumber; i++){
+        let row = document.createElement("tr");
+        for (let j = 0; j < colNumber; j++){
+            let col = document.createElement("td");
+            col.onclick = function(){
+                this.style.backgroundColor = colorSelected;
+            };
+            row.appendChild(col);
+        }
+        grid.appendChild(row);
     }
 }
 
